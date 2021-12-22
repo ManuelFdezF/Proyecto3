@@ -1,5 +1,5 @@
-# Proyecto3
-CrossfitAPP
+# Proyecto3 - CrossFitAPP V1.0
+## Descripción
 
 En este proyecto creamos una aplicación para un Box de Crossfit para que sus usuarios puedan reservar las clases diarias, llevar un registro de sus marcas personales, ver WODs famosos y pagar la cuota mensual.
 
@@ -40,3 +40,50 @@ Para que el usuario cliente pague la mensualidad
 
    * *Salir:* 
 Para “desloguearse” de la aplicación
+
+## Descripción técnica
+
+__Rutas de USUARIO (UserRouter.js)__
+* __Usuario Administrador__
+   * *Registrar usuario.* “/register” – El Administrador de la aplicación registrará los usuarios introduciendo un nombre, apellido, email y contraseña. Una vez creado, al usuario le llegará un correo electrónico con los datos de acceso.
+
+
+* __Usuario__ 
+   * *Loguear un usuario.* “/login” – Los usuarios se loguearán para acceder a la aplicación introduciendo el email y contraseña que han recibido por email.
+   * *Ver perfil de usuario.* “/profile” – Los usuarios pueden ver los datos de su perfil
+   * *Modificar perfil de usuario.* “/updateProfile” – Se podrán actualizar los datos del perfil
+   * *Subir imagen de perfil.* “/upload” – Se utilizará para subir la foto de perfil de usuario.
+   * *Eliminar un usuario.* “/deleteUser” – Los usuarios podrán eliminar su cuenta de la base de datos
+
+__Rutas de WOD (WodsRouter.js)__
+
+* __Usuario Administrador__
+   * *Crear un WOD.* “/createWod” – Se crearán entrenos que van en un apartado para que los usuarios puedan consultarlos.
+   * *Actualizar WOD.* “/updateWod/:id” – Se podrá actualizar el WOD que se haya pasado su ID por params.
+   * *Eliminar un WOD.* “/deleteWod/:id” – Se eliminará el WOD que hayamos pasado su ID por params.
+
+* __Usuario__
+   * *Listar WOD.* “/wodsList” – Los usuarios podrán ver todos los wods que estén creados 
+
+__Rutas de CLASES (ClassesRouter.js)__
+* __Usuario Administrador__
+   * *Crear una clase.* “/createClass” – Se podrá crear una clase indicando la fecha y el entreno de día
+   * *Modificar una clase.* “/updateClass/:id” – Se podrá modificar la clase que hayamos indicado por params su ID.
+   * *Eliminar una clase.* “/deleteClass/:id” – Se eliminará la clase que hayamos introducido su ID por params
+
+* __Usuario__
+   * *Listar Clases con horario.* "/classesList/:id" - Se podrá listar la clase que pasemos su ID por params y veremos los datos de la clase y sus horarios.
+
+__Rutas de Horarios (TimeTableRouter.js)__
+
+* __Usuario Administrador__
+   * *Crear un horario.* "/createTime/:dateID" - Se crea un horario para una fecha de clase específica que pasaremos por params y el número de personas que podrán apuntarse a la clase.
+   * *Modificar horario.* "/updateTime/:id" - Se modifica el horario o el número de personas de la clase pasando su ID por params.
+   * *Eliminar horario.* "/deleteTime/:id" - Se elimina el horario pasado por params.
+
+
+
+
+
+
+
