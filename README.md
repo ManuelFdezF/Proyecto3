@@ -21,24 +21,22 @@ Crea los nombres de ejercicios en los cuales el usuario introducirá sus resulta
      
 
 * __Usuario cliente:__
-
 El usuario recibirá vía email una invitación por parte del propietario para que acceda a la aplicación utilizando las credenciales que le llegan y teniendo que cambiar la contraseña una vez entre.
 
-Una vez dentro se encontrará con los siguientes apartados:
-    * *Perfil:*
+   * *Perfil:*
 En el que podrá modificar su nombre, apellido, foto y contraseña. También podrá eliminar su cuenta
 
-    * *Reserva de clases:* 
+   * *Reserva de clases:* 
 Se verá el listado de clases del día para elegir la hora que más le convenga, la descripción del entreno del día y el listado (foto) de usuarios que ya estén apuntados (si los hubiera). Habrá un botón de “Reservar” en cada hora.
 En caso de que estés apuntado en una clase aparecerá el botón “Borrar” para quitarte de la clase.
 
-    * *Marcas Personales:*
+   * *Marcas Personales:*
 En este apartado el usuario podrá llevar el registro de su progresión en cuando a “pesos”.
 Una vez dentro existe un listado de ejercicios introducidos por el usuario administrador en el que entrando en cada uno de ellos podemos añadir tantas veces como queramos: Fecha, repeticiones y peso. 
 De esta forma cuando haya datos y entremos en un ejercicio en concreto se verá el listado de las notas que hayamos añadido.
 
-    * *Pagos:*
+   * *Pagos:*
 Para que el usuario cliente pague la mensualidad
 
-    * *Salir:* 
+   * *Salir:* 
 Para “desloguearse” de la aplicación
