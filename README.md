@@ -45,44 +45,62 @@ Para “desloguearse” de la aplicación
 
 __Rutas de USUARIO (UserRouter.js)__
 * __Usuario Administrador__
-   * *Registrar usuario.* “/register” – El Administrador de la aplicación registrará los usuarios introduciendo un nombre, apellido, email y contraseña. Una vez creado, al usuario le llegará un correo electrónico con los datos de acceso.
+   * *Registrar usuario:* “/register” – El Administrador de la aplicación registrará los usuarios introduciendo un nombre, apellido, email y contraseña. Una vez creado, al usuario le llegará un correo electrónico con los datos de acceso.
 
 
 * __Usuario__ 
-   * *Loguear un usuario.* “/login” – Los usuarios se loguearán para acceder a la aplicación introduciendo el email y contraseña que han recibido por email.
-   * *Ver perfil de usuario.* “/profile” – Los usuarios pueden ver los datos de su perfil
-   * *Modificar perfil de usuario.* “/updateProfile” – Se podrán actualizar los datos del perfil
-   * *Subir imagen de perfil.* “/upload” – Se utilizará para subir la foto de perfil de usuario.
-   * *Eliminar un usuario.* “/deleteUser” – Los usuarios podrán eliminar su cuenta de la base de datos
+   * *Loguear un usuario:* “/login” – Los usuarios se loguearán para acceder a la aplicación introduciendo el email y contraseña que han recibido por email.
+   * *Ver perfil de usuario:* “/profile” – Los usuarios pueden ver los datos de su perfil
+   * *Modificar perfil de usuario:* “/updateProfile” – Se podrán actualizar los datos del perfil
+   * *Subir imagen de perfil:* “/upload” – Se utilizará para subir la foto de perfil de usuario.
+   * *Eliminar un usuario:* “/deleteUser” – Los usuarios podrán eliminar su cuenta de la base de datos
 
 __Rutas de WOD (WodsRouter.js)__
 
 * __Usuario Administrador__
-   * *Crear un WOD.* “/createWod” – Se crearán entrenos que van en un apartado para que los usuarios puedan consultarlos.
-   * *Actualizar WOD.* “/updateWod/:id” – Se podrá actualizar el WOD que se haya pasado su ID por params.
-   * *Eliminar un WOD.* “/deleteWod/:id” – Se eliminará el WOD que hayamos pasado su ID por params.
+   * *Crear un WOD:* “/createWod” – Se crearán entrenos que van en un apartado para que los usuarios puedan consultarlos.
+   * *Actualizar WOD:* “/updateWod/:id” – Se podrá actualizar el WOD que se haya pasado su ID por params.
+   * *Eliminar un WOD:* “/deleteWod/:id” – Se eliminará el WOD que hayamos pasado su ID por params.
 
 * __Usuario__
-   * *Listar WOD.* “/wodsList” – Los usuarios podrán ver todos los wods que estén creados 
+   * *Listar WOD:* “/wodsList” – Los usuarios podrán ver todos los wods que estén creados 
 
 __Rutas de CLASES (ClassesRouter.js)__
 * __Usuario Administrador__
-   * *Crear una clase.* “/createClass” – Se podrá crear una clase indicando la fecha y el entreno de día
-   * *Modificar una clase.* “/updateClass/:id” – Se podrá modificar la clase que hayamos indicado por params su ID.
-   * *Eliminar una clase.* “/deleteClass/:id” – Se eliminará la clase que hayamos introducido su ID por params
+   * *Crear una clase:* “/createClass” – Se podrá crear una clase indicando la fecha y el entreno de día
+   * *Modificar una clase:* “/updateClass/:id” – Se podrá modificar la clase que hayamos indicado por params su ID.
+   * *Eliminar una clase:* “/deleteClass/:id” – Se eliminará la clase que hayamos introducido su ID por params
 
 * __Usuario__
-   * *Listar Clases con horario.* "/classesList/:id" - Se podrá listar la clase que pasemos su ID por params y veremos los datos de la clase y sus horarios.
+   * *Listar Clases con horario:* "/classesList/:id" - Se podrá listar la clase que pasemos su ID por params y veremos los datos de la clase y sus horarios.
 
 __Rutas de Horarios (TimeTableRouter.js)__
 
 * __Usuario Administrador__
-   * *Crear un horario.* "/createTime/:dateID" - Se crea un horario para una fecha de clase específica que pasaremos por params y el número de personas que podrán apuntarse a la clase.
-   * *Modificar horario.* "/updateTime/:id" - Se modifica el horario o el número de personas de la clase pasando su ID por params.
-   * *Eliminar horario.* "/deleteTime/:id" - Se elimina el horario pasado por params.
+   * *Crear un horario:* "/createTime/:dateID" - Se crea un horario para una fecha de clase específica que pasaremos por params y el número de personas que podrán apuntarse a la clase.
+   * *Modificar horario:* "/updateTime/:id" - Se modifica el horario o el número de personas de la clase pasando su ID por params.
+   * *Eliminar horario:* "/deleteTime/:id" - Se elimina el horario pasado por params.
 
+__Rutas de Ejercicios (ExercicesRoutes.js)__
 
+* __Usuario__
+   * *Crear ejercicio:* "/createExercice" - El usuario creará diferentes ejercicios por nombre para posteriormente añadir sus marcas personales a él.
+   * *Modificar un ejercicio:* "/updateExercice/:id" - Introduciendo una ID de un ejercicio por params podremos modificarlo.
+   * *Eliminar un ejercicio:* "/deleteExercice/:id" - Se eliminará el ejercicio con la ID que pasemos por params.
+   * *Listar ejercicios de un usuario.* "/exercicesUser" - Se identifica la ID del usuario logueado, a continuación se busca en el modelo de usuario si existe esa ID y si existe busca en el modelo de *ejercicios* si hay ejercicios asociados a esa ID. Finalmente muestra el usuario y todos los ejercicios que tenga asociados.
+   * *Listar ejercicios:* "/marksUserList/:id" - En esta ruta pasaremos por params la ID de un ejercicio para que nos muestre todas las marcas asociadas al ejercicio.
 
+__Rutas de Marcas (MarksRouter.js)__
+
+* __Usuario__
+   * *Crear una marca:* "/createMark" - Se creará una marca para el ejercicio que seleccionemos donde podremos introducir la fecha, las repeticiones del ejercicio, el peso y un comentario.
+   * *Eliminar una marca:* "/deleteUserMark/:id" - A través de params pasaremos la ID de una marca para eliminarla.
+
+__Rutas de Reservas (BookingRouter.js)__
+* __Usuario__
+   * *Nueva Reserva:* "/newBooking" - En esta ruta a través del token de usuario se identifica su ID y realiza la reserva asociandola a una ID de Clase y a una ID de horario.
+   * *Eliminar Reserva:* "/deleteBooking/:id" - A través de la ID de reserva pasada por params se eliminará la reserva quedando disponible para otro usuario.
+   * *Listar Clases con usuarios apuntados:* "/bookingList/:id" - Introduciendo por params una ID de clase se mostrará la clase con todos sus horarios y con los usuarios con reserva. Esto se realiza ya que se busca la ID introducida en los modelos de Clases, horarios y reservas.
 
 
 
