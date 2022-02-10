@@ -15,7 +15,7 @@ const checkToken = (req, res, next) =>{  // checkToken se importa en cada ruta q
                 message: "Invalid authetification(2)"
         })
         req.user = user
-        console.log(user)
+        // console.log(user)
         next()
         
     })

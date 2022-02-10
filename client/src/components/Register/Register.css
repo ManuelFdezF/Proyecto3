@@ -1,0 +1,25 @@
+/* .inputReg{
+    width: 50%;
+} */
+
+
+.container_inputReg{
+    width: 65%;
+    margin: auto;
+}
+.button_user_delete{
+    text-decoration: none;
+}
+
+.input_design{
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    color: #0B3948;
+}
+/* .input_design::placeholder { color: #0B3948 } */
+
+.color_input{
+    color: #0B3948;
+}
+p{
+    color: #0B3948;
+}

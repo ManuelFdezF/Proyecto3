@@ -25,7 +25,12 @@ try {
         success:false,
         message:"El ejercicio introducido ya existe"
     })
-
+    if (!type) {
+        return res.status(400).json({
+            success: false, 
+            message: "Tienes que eligir un tipo de WOD"
+        })
+    }
     if (!type || !name || !time || !description){
         return res.status(400).json({
             success: false, 

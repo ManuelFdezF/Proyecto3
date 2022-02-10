@@ -1,0 +1,51 @@
+.container_wods{
+    width: 90%;
+    border: 1px dotted #0B3948;
+    margin: 25px auto 35px auto;
+    border-radius: 20px;
+
+}
+.wod_name{
+    font-weight: bold;
+    font-size: 25px;
+    background-color: #ACB0BC;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.wod_time{
+    margin-top: -15px;
+}
+.wod_type{
+    margin-top: -15px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.container_description{
+    /* width: 50%; */
+    margin: auto;
+}
+.wod_description{
+    margin-top: -15px;
+}
+
+.container_wodsList{
+    display: flex;
+}
+.wod_nameList{
+    width: 50%;
+}
+
+.buttonBack{
+    text-decoration: none;
+    font-size: 40px;
+    color: rgb(114, 113, 113);
+}
+.buttonPlus{
+    font-size: 40px;
+    color: rgb(114, 113, 113);
+}
+
+.select_wod{
+    width: 65%;
+    margin-bottom: 15px;
+}

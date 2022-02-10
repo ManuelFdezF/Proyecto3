@@ -1,0 +1,116 @@
+.button_goBack{
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+
+}
+
+
+.containerInput{
+    border: 1px dotted #0B3948;
+}
+.containerInputName{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    /* border-bottom: none; */
+}
+
+.copy_Input{
+    background-color: #ACB0BC;
+    font-weight: bold;
+    color: #0B3948;
+    font-size: 19px;
+    
+}
+.copy_Input_nombre{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.container_mod{
+    width: 95%;
+    margin: 25px auto;
+}
+
+
+.container_deleteButton{
+    width: 90%;
+    margin: 80px auto;
+    text-align: right
+}
+.button_delete_user{
+    margin-top: 15px;
+    background-color: rgb(247, 86, 86);
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    width: 140px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.button_delete_photo{
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(247, 86, 86);
+    color: #fff;
+    padding: 5px 13px;
+}
+
+/* .container_photo{
+    margin: 25px auto;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #000;
+} */
+
+.container_buttons{
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto 15px auto;
+}
+
+/* .container_ima_profile{
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #000;
+    border-radius: 50%;
+} */
+
+.profile_photo{
+    margin-top: 20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+    object-position: top;
+    border: 5px solid #ACB0BD;
+}
+
+.container_profile{
+    margin-top: 15px;
+}
+
+
+.upload_imagen{
+    margin-top: 20px;
+    width: 100%;
+    font-size: 13px;
+    /* background-color: rgb(149, 195, 247); */
+    border: none;
+}
+/* .back_button{
+    left: 0;
+} */
+
+.container_back_button{
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+
+.subtitle_modprofile{
+    margin-top: 25px;
+}

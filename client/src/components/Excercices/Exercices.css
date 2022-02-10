@@ -1,0 +1,29 @@
+/* .exercices_name{
+    background-color: rgb(176, 221, 247);
+    width: 60%;
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 15px;
+} */
+
+.exercices_list{
+    background-color: #D0CDD7;
+    font-weight: bold;
+    font-size: 23;
+    width: 230px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    border: none;
+}
+
+.container_exercices1{
+    display: flex;
+    justify-content: center;
+}
+.buttonPlus{
+    margin-bottom: 15px;
+}
+.nameExerciceMarks{
+    margin-top: -20px;
+    color: #0B3948;
+}

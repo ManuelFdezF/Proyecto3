@@ -1,0 +1,26 @@
+
+/* .tittleLogin{
+    color: blue;
+} */
+
+.input_login{
+    margin-top: 15px;
+}
+
+.button_submit{
+    margin-top: 15px;
+    background-color: #416165;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 13px;
+    color: #fff;
+    width: 100px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.message_login{
+    margin-top: 15px;
+}
+
+.subtitle_copy{
+    margin-bottom: 35px;
+}

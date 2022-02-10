@@ -17,7 +17,7 @@ ClassesRouter.post("/createClass", checkToken, authAdmin, async (req, res) =>{
             message: "Usuario no logueado"
         })
 
-        const date1 = await Users.findOne({date})    // Compruebo si ya existe una clase con esa fecha
+        const date1 = await Classes.findOne({date})    // Compruebo si ya existe una clase con esa fecha
         if (date1) return res.status(400).json({
             success: false,
             message: `Ya existe una clase con la fecha ${date}`
@@ -97,6 +97,18 @@ ClassesRouter.delete("/deleteClass/:id", checkToken, authAdmin, async (req, res)
         })
 
         await Classes.findByIdAndDelete(id)
+        TimeTable.find({date: id}).then(foundTimeTable =>{
+            foundTimeTable.map((arrTime)=>{
+                TimeTable.findByIdAndDelete(arrTime._id, function(err, arrTime){
+                    if (err){
+                        console.log(err)
+                    }else{
+                        console.log("Horario eliminado")
+                    }
+                })
+            })
+        })
+
         return res.status(200).json({
             success: true,
             message: "La clase se ha eliminado correctamente"
@@ -140,7 +152,29 @@ ClassesRouter.get("/classesList/:id", checkToken, async (req, res) => {
     }
 })  
     
+// Listar todas las clases
 
+ClassesRouter.get("/getClasses", checkToken, async (req, res) =>{
+    try {
+        const user = await Users.findById(req.user.id)     
+        if (!user) return res.status(500).json({          
+            success: false,
+            message: `El usuario no está logueado`
+        })
+
+        let classes = await Classes.find({})
+        return res.status(200).json({
+            success: true,
+            classes
+        })
+            
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        }) 
+    }
+})
     
 
 module.exports = ClassesRouter

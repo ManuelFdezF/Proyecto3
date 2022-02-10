@@ -9,12 +9,13 @@ const ClassesRouter = require("./api/ClassesRouter")
 const TimetableRouter = require("./api/TimeTableRouter")
 const BookingRouter = require("./api/BookingRouter")
 const fileUpload = require("express-fileupload")
+const cors = require("cors")
 
 
 const app = express()
 app.use(express.json()); //estos dos comandos para que lea json y funcione desdes postman
 app.use(express.urlencoded({extended: true})); //leer datos desde postman desde urlencoded
-
+app.use(cors()) // para poder coger datos del backend
 app.use(fileUpload({useTempFiles: true})) //Para poder subir archivos desde postman
 
 

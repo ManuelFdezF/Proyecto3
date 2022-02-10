@@ -1,0 +1,30 @@
+.footer_container{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #0B3948;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+/* .footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+} */
+
+.footer_name{
+    color: #fff;
+}
+
+.red_social{
+    color: #fff;
+    font-size: 25px;
+}
+.fa-facebook{
+    margin-left: 15px;
+    margin-right: 15px;
+}

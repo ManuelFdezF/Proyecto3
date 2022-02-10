@@ -1,0 +1,89 @@
+.classes_list{
+    background-color: #D0CDD7;
+    font-weight: bold;
+    font-size: 23;
+    width: 65%;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    border: none;
+}
+
+.time_booking{
+    margin-top: -27px;
+}
+
+.wodDay_booking{
+    width: 30%;
+    margin: auto;
+}
+
+.time_class{
+    font-weight: bold;
+    font-size: 25px;
+    text-align: left;
+    margin-left: 30px;
+    width: 50%;
+    
+}
+
+.user_photo_booking{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.container_class{
+    width: 95%;
+    margin: auto;
+    border: 1px dotted #0B3948;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    background-image: linear-gradient(15deg, #fff 0%, #96BAA5 100%);
+}
+
+.container_booking{
+    width: 95%;
+    /* height: 200px; */
+    /* border: 1px dotted #000; */
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.name_booking{
+    font-size: 11px;
+}
+.container_images{
+    display: flex;
+    justify-content: center;
+}
+.delete_booking{
+    margin-top: -15px;
+}
+.button_booking{
+    margin-bottom: 5px;
+}
+.button_wod_booking{
+    margin-bottom: 15px;
+    background-color: #D0CDD7;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+/* .wod_booking{
+
+} */
+.container_time_nPeople{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.numPeople{
+    width: 50%;
+    margin: auto;
+    text-align: right;
+    margin-right: 30px;
+}
+.booking_wod{
+    margin: auto auto 10px auto;
+    width: 65%;
+    
+}

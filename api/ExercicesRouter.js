@@ -10,42 +10,57 @@ const mongoose = require("mongoose")
 
 ExercicesRouter.post("/createExercice", checkToken, async (req, res) =>{
     try {
-        const {name} = req.body
+        const {nameExercice} = req.body
         // const {userID} = req.user
-        const user = await Users.findById(req.user.id)     // Busca en el modelo de usuario si encuentra la ID pasada por token
+        const user = await Users.findById(req.user.id)  
+        // console.log(user)   // Busca en el modelo de usuario si encuentra la ID pasada por token
         if (!user) return res.status(500).json({           // Si no encuentra la id de usuario es que no está logueado
             success: false,
             message: `El usuario no está logueado`
         })
         
-
-        if (!name){
+        if (!nameExercice){
             return res.status(400).json({
                 success: false,
                 message: "No puede dejar el campo el blanco"
             })
         }
 
-        // PROBAR RUTA
-        // let name2 = await Exercices.findOne({name})
+        // Compruebo si el ejercicio existe para el usuario logueado
 
-        // if (user && name2){
-        //     return res.status(400).json({
-        //         success:false,
-        //         message: `El ejercicio ${name2} ya existe para el usuario ${user.name}` 
-        //     })
-        // }
+        let exercicesFound = false
 
+        const exercicess = await Exercices.find({user: req.user.id})
+        // console.log(exercicess)
+        
+        exercicess.map((exerciceSearch)=>{
+            // console.log("exercicess.nameExercice",exerciceSearch.nameExercice)
+            if (exerciceSearch.nameExercice == nameExercice){
+                return exercicesFound = true
+            }
+        })
+
+        if (exercicesFound == true){
+            return res.status(400).json({
+                success:false,
+                message: `El ejercicio ya existe para el usuario ${user.name}` 
+            })
+        }
+        
+        
+       
         const newExercice = new Exercices({ 
-            name,
+            nameExercice,
             user
         })
+        
         await newExercice.save()
         return res.status(200).json({
             success:true, 
             newExercice,
-            message: `${name} se ha creado como nuevo ejercicio`
+            message: `${nameExercice} se ha creado como nuevo ejercicio`
         })
+    
 
     } catch (error) {
         return res.status(500).json({
@@ -61,7 +76,7 @@ ExercicesRouter.post("/createExercice", checkToken, async (req, res) =>{
 ExercicesRouter.put("/updateExercice/:id", checkToken, async (req, res) =>{
     try {
         const {id} = req.params
-        const {name} = req.body
+        const {nameExercice} = req.body
 
         const user = await Users.findById(req.user.id)     // Busca en el modelo de usuario si encuentra la ID pasada por token
         if (!user) return res.status(500).json({           // Si no encuentra la id de usuario es que no está logueado
@@ -69,20 +84,20 @@ ExercicesRouter.put("/updateExercice/:id", checkToken, async (req, res) =>{
             message: `El usuario no está logueado`
         })
 
-        // const exercice = await Exercices.findOne({name})  
+        // const exercice = await Exercices.findOne({nameExercice})  
         // if(exercice) return res.status(400).json({
         //     success:false,
-        //     message: `'${name}' ya está creado.` 
+        //     message: `'${nameExercice}' ya está creado.` 
         // })
         
-        if (!name){
+        if (!nameExercice){
             return res.status(400).json({
                 success: false, 
                 message: "No puede dejar el ejercicio en blanco"
             })
         }
 
-        await Exercices.findByIdAndUpdate(id, {name})
+        await Exercices.findByIdAndUpdate(id, {nameExercice})
         res.status(200).json({
             success: true,
             message: `El ejercicio se ha modificado correctamente.`
@@ -111,6 +126,20 @@ ExercicesRouter.delete("/deleteExercice/:id", checkToken, async (req, res) =>{
         })
 
         await Exercices.findByIdAndDelete(id)
+
+        //Elimino las marcas que están asociadas al ejercicio
+        Mark.find({exercices: id}).then(foundMarks =>{
+            foundMarks.map((arrMark)=>{
+                Mark.findByIdAndDelete(arrMark._id, function(err, arrMark){
+                    if (err){
+                        console.log(error)
+                    }else{
+                        console.log("Eliminada marca", arrMark)
+                    }
+                })
+            })
+        })
+
         return res.status(200).json({
             success: true,
             message: "Ejercicio eliminado correctamente"
@@ -162,7 +191,7 @@ ExercicesRouter.get("/marksUserList/:id", checkToken, async (req, res) => {
         message: "Usuario no logueado"
     })
 
-    Exercices.findById(exerciceID).populate("name")
+    Exercices.findById(exerciceID) //.populate("name")
         .then(exercices => {
             Mark.find({ exercices: exerciceID }) //.populate("exercices")
                 .then(marks => {

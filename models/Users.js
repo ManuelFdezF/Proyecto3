@@ -17,8 +17,7 @@ password:{
     type: String,
     required: true
 },
-exercice:{
-    
+exercice:{ 
     type: mongoose.Types.ObjectId,
     ref: "Exercices"
 },

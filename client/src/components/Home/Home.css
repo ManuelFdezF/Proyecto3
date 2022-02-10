@@ -1,0 +1,77 @@
+.container{
+    width: 95%;
+    margin: auto;
+    /* margin-top: 60px; */
+    
+}
+
+.containerCircle{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    
+}
+.containerCircle2{
+    margin-top: 70px;
+    
+}
+.subtitle{
+    margin-top: 25px;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 40px;
+    color: #0B3948;
+}
+.circle{
+    width: 140px;
+    height: 140px;
+    border: 5px solid #ACB0BD;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    
+}
+.menu_copy{
+    /* display: flex;
+    justify-content: center; */
+    padding-top: 12px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    z-index: 1
+    /* color: #000 */
+}
+.menu_copyAdm{
+    text-decoration: none;
+    color: #0B3948;
+    font-weight: bold;
+    z-index: 1;
+    font-size: 20px;
+}
+/* .text_border{
+    -webkit-text-stroke: 1px #0B3948;
+    color: #D9DBF1;
+} */
+/* Imagenes del menú -------------------- */
+
+.img_Circle{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    position: absolute
+}
+
+.img_difu{
+    opacity: 0.8;
+}
+.img_Circle_adm{
+    /* background: #D9DBF1;  fallback for old browsers
+    background: -webkit-linear-gradient(to right, #D0CDD7, #D9DBF1);  Chrome 10-25, Safari 5.1-6
+    background: linear-gradient(to right, #D0CDD7, #D9DBF1); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background-image: linear-gradient(to top, #D0CDD7 0%, #D9DBF1 100%); */
+    background-image: linear-gradient(15deg, #fff 0%, #96BAA5 100%);
+}

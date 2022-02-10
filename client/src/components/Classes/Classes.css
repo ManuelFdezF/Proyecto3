@@ -1,0 +1,35 @@
+.input_time{
+    border: none;
+    text-align: center;
+}
+/* .input_time::placeholder{color: #0B3948} */
+
+.container_buttonT{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.container_input_addTmtb{
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.container_input_wod{
+    width: 65%;
+    margin: auto;
+}
+.input_wod{
+    height: 150px;
+    width: 100%;
+    border: none;
+    color: #0B3948;
+}
+.input_wod::placeholder{
+    color: #0B3948;
+}
+.subtitle_copy{
+    margin-top: -23px;
+    }

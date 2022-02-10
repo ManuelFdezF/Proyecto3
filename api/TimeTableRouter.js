@@ -19,20 +19,33 @@ TimetableRouter.post("/createTime/:dateID", checkToken, authAdmin, async (req,re
             message: `El usuario no está logueado`
         })
 
-        const date1 = await TimeTable.findOne({dateID})   //  Compruebo si encuentra date y time.
-        const time1 = await TimeTable.findOne({time})
-        if (date1 && time1) return res.status(400).json({
-            success: false, 
-            message: `Ya existe el horario ${time} para la fecha indicada`
-        })
-
-
+        //Compruebo que ha introducido todos los datos
         if (!time || !nPeople){
             res.status(400).json({
                 success: false, 
                 message: "Tiene que rellenar todos los campos"
             })
         }
+
+        // Compruebo si el horario existe para esa clase
+        let timeTableFound = false
+        
+        const timeTabless = await TimeTable.find({date: dateID})
+        
+        timeTabless.map((timeSearch)=>{
+            if (timeSearch.time == time){
+                return timeTableFound = true
+            }
+        })
+
+        if (timeTableFound == true){
+            return res.json({
+                success: false,
+                message: `El horario ya existe para la clase!`
+            })
+        }
+
+        
     
         const newDate = new TimeTable({
             time,

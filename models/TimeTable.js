@@ -17,6 +17,9 @@ date:{
 user:{
     type: mongoose.Types.ObjectId,
     ref: "Users"
+},
+numTotPeople:{
+    type: Array
 }
 
 })
