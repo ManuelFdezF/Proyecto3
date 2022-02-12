@@ -7,7 +7,6 @@ import Profile from './components/Profile/Profile';
 import ProfileData from './components/Profile/ProfileData';
 import Wods from './components/Wods/Wods';
 import ProfileDataMod from './components/Profile/ProfileDataMod'
-import ProfileDelete from './components/Profile/ProfileDelete';
 import ProfilePhoto from './components/Profile/ProfilePhoto';
 import Exercices from './components/Excercices/Exercices';
 import ExerciceAdd from './components/Excercices/ExerciceAdd';
@@ -25,7 +24,6 @@ import ClassList from './components/Bookings/ClassList';
 import Booking from './components/Bookings/Booking';
 import Footer from './components/Footer/Footer';
 import Logout from './components/Logout/Logout';
-import ExerciceDelete from './components/Excercices/ExercicesDelete';
 
 
 
@@ -48,7 +46,6 @@ function App() {
         <Route path="/profileData" element={<ProfileData />} >
             <Route path="profileModify" element={<ProfileDataMod />} />
         </Route>
-        <Route path="/deleteUser" element={<ProfileDelete />} />
         <Route path="/profilePhoto" element={<ProfilePhoto />} />
         
         <Route path="/register" element={<Register />} />
@@ -63,7 +60,6 @@ function App() {
         <Route path="/exercices" element={< Exercices />} >
             <Route path="addExercice" element={<ExerciceAdd />} />
         </Route>
-        <Route path="/deleteExercice/:IDexercice" element={<ExerciceDelete />} />
         <Route path="/marks/:exerciceID" element={<Marks />}>
             <Route path="marksAdd/:exerciceAddMarkID" element={<MarksAdd />} />
         </Route>
