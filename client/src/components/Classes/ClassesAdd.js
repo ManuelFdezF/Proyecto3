@@ -55,16 +55,11 @@ const ClassesAdd = ()=>{
                 <input type="date" name="date" value={info.date} onChange={onChangeInput} className="form-control input_design" id="floatingDateC" placeholder="Fecha" />
                 <label htmlFor="floatingDateC" className="color_input">Fecha</label>
             </div>
-                {/* <p>Fecha</p>
-                <input type="date" name="date" value={info.date} className="input_addClasses" onChange={onChangeInput}></input> */}
+                
             <div className="form-floating mb-3 container_inputReg container_input_wod">
-                {/* <input type="text" name="wodDay" value={info.wodDay} onChange={onChangeInput} className="form-control input_design " aria-label="With textarea" id="floatingWod"></input> */}
                 <textarea type="text" name="wodDay" value={info.wodDay} onChange={onChangeInput} className=" input_design input_wod" id="floatingWod" placeholder="Wod del día" />
                 <label htmlFor="floatingWod" className="color_input"></label>
             </div>
-
-                {/* <p>WOD del Día</p>    
-                <textarea name="wodDay" value={info.wodDay} onChange={onChangeInput} className="form-control" aria-label="With textarea"></textarea> */}
                 <button className="button_submit">Aceptar</button>
             </form>
             <div style={{display: successMessage ? "block": "none"}}>{successMessage}</div>
@@ -72,7 +67,6 @@ const ClassesAdd = ()=>{
 
         <Link to="/home">
             <div className="container_back_button">
-                {/* <box-icon name='left-arrow-circle' size='lg' color='grey' className="back_button"></box-icon> */}
                 <i className="far fa-arrow-alt-circle-left buttonBack"></i>
             </div>
         </Link>

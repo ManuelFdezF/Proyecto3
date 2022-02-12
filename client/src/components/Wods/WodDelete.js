@@ -10,9 +10,6 @@ const WodDelete = () =>{
     const [wodss, setWodss] = useState([])
     const token = localStorage.getItem('firsLogin')
     const role = localStorage.getItem('role')
-    // console.log(token)
-    // const [errorMessage, setErrorMessage] = useState(null)
-    // const [successMessage, setSuccessMessage] = useState(null)
     const navigate = useNavigate()
     useEffect(()=>{
         let mounted = true
@@ -52,15 +49,7 @@ const WodDelete = () =>{
             })
     }
 
-    // const deleteWod = async (idWod) =>{
-    //     try {
-    //         const responsee = await axios.delete(`http://localhost:5000/api/deleteWod/${idWod}`, {headers:{"Authorization": token}})
-    //         // console.log("response del delete",responsee)
-    //         setSuccessMessage(responsee.data.message)
-    //     } catch (error) {
-    //         setErrorMessage(error.responsee.data.message)
-    //     }
-    // }
+
 
     return(
         <div>
@@ -70,7 +59,7 @@ const WodDelete = () =>{
                     <thead>
                         <tr>
                             <th className="copy_Input">WODs</th>
-                            {/* <th>Eliminar</th> */}
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -79,7 +68,6 @@ const WodDelete = () =>{
                                 return(
                                 <tr key={WODS._id} >
                                     <td>{WODS.name}</td>
-                                    {/* <div onClick={()=>{deleteWod(WODS._id)}}>❌</div> */}
                                     <td onClick={()=>{showAlert(WODS._id)}}>❌</td>
                                 </tr>
                                 )
@@ -91,7 +79,6 @@ const WodDelete = () =>{
                         <div className="message_login" style={{display: errorMessage ? "block": "none"}}>{errorMessage}</div> */}
                         <Link to="/home">
                             <div className="container_back_button">
-                            {/* <box-icon name='left-arrow-circle' size='lg' color='grey' className="back_button"></box-icon> */}
                             <i className="far fa-arrow-alt-circle-left buttonBack"></i>
                             </div>
                         </Link>

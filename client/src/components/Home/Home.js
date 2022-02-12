@@ -15,10 +15,9 @@ import imgDeleteWod from './images/imgDeleteWod1.png'
 const Home = () =>{
     
     const role = localStorage.getItem('role')
-    // console.log("role", role)
     const token = localStorage.getItem('firsLogin')
-    
     const navigate = useNavigate()
+
     useEffect(()=>{
         if (!token) navigate('/')
     },[])
@@ -67,33 +66,27 @@ const Home = () =>{
                     <div className="containerCircle">
                         <Link className="circle" to="/register">
                             <img className="img_Circle img_difu img_Circle_adm" src={imgAddUser} alt=""></img>
-                            {/* <Link className="menu_copyAdm text_border" to="/register">Registrar Usuario</Link> */}
                         </Link>
                         <Link className="circle" to="/usersList">
                             <img className="img_Circle img_difu img_Circle_adm" src={imgUserList} alt=""></img>
-                            {/* <Link className="menu_copyAdm text_border" to="/usersList">Listado y Baja Usuario</Link> */}
                         </Link>
                         
                     </div>
                     <div className="containerCircle containerCircle2">
                         <Link className="circle" to="/classesAdd">
                             <img className="img_Circle img_difu img_Circle_adm" src={imgAddClass} alt=""></img>
-                            {/* <Link className="menu_copyAdm" to="/classesAdd">Crear Clase</Link> */}
                         </Link>
                         <Link className="circle" to="/classeslist">
                         <img className="img_Circle img_difu img_Circle_adm" src={imgAddTimeTable} alt=""></img>
-                            {/* <Link className="menu_copyAdm" to="/classeslist">Horarios y Eliminar Clase </Link> */}
                         </Link>
                     </div>
                 
                 <div className="containerCircle containerCircle2">
                     <Link className="circle" to="/createWod">
                         <img className="img_Circle img_difu img_Circle_adm" src={imgAddWod} alt=""></img>
-                        {/* <Link className="menu_copyAdm" to="/createWod">Crear WODs</Link> */}
                     </Link>
                     <Link className="circle" to="/deleteWod">
                     <img className="img_Circle img_difu img_Circle_adm" src={imgDeleteWod} alt=""></img>
-                        {/* <Link className="menu_copyAdm" to="/deleteWod">Eliminar WODs</Link> */}
                     </Link> 
                 </div> 
                 </div>  

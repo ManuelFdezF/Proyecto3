@@ -14,7 +14,7 @@ const TimeTable = () =>{
     // const [errorMessage, setErrorMessage] = useState(null)
     const navigate = useNavigate()
     useEffect (()=>{
-        // const getTimeTable = async ()=>{
+        
             let mounted = true
             axios.get(`http://localhost:5000/api/classesList/${classesID}`, {headers:{"Authorization": token}}).then((response)=>{
                 if (mounted){
@@ -22,8 +22,7 @@ const TimeTable = () =>{
                     setCurrentDate(response.data.date)
                 }
             })
-        // }  
-        // getTimeTable()
+        
         return () =>{
             mounted = false
         }
@@ -133,14 +132,12 @@ const TimeTable = () =>{
             </tbody>
             </table>
             <Link className="container_addTimeTable" to={`timetablesAdd/${classesID}`}>
-            {/* <box-icon name='plus-circle' size='lg' color='grey'></box-icon> */}
             <i className="fas fa-plus-circle buttonPlus"></i>
             </Link>
             <Outlet />
             <br /><button className="button_delete_user" onClick={()=>{showAlert1(classesID)}}>Eliminar Clase</button>
             <Link to="/classeslist">
             <div className="container_back_button">
-                {/* <box-icon name='left-arrow-circle' size='lg' color='grey' className="back_button"></box-icon> */}
                 <i className="far fa-arrow-alt-circle-left buttonBack"></i>
             </div>
         </Link>

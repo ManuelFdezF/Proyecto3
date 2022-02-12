@@ -178,25 +178,3 @@ ClassesRouter.get("/getClasses", checkToken, async (req, res) =>{
     
 
 module.exports = ClassesRouter
-
-
-
-
-
-//Listar todas las clases
-
-// ClassesRouter.get("/classesList", async (req, res) =>{
-//     try {
-//         let classes = await Classes.find({})
-//         return res.status(200).json({
-//             success: true,
-//             classes
-//         })
-            
-//     } catch (error) {
-//         return res.status(500).json({
-//             success: false,
-//             message: error.message
-//         }) 
-//     }
-// })

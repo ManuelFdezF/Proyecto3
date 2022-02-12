@@ -42,7 +42,7 @@ const onChangeInput = (e) =>{
 
 
 
-//e.preventdefault No refresca la página hasta que envíes la información
+
 const registerSubmit = async e => {
     e.preventDefault()
             
@@ -96,7 +96,6 @@ const registerSubmit = async e => {
         </form>
         <Link to="/home">
                 <div className="container_back_button">
-                {/* <box-icon name='left-arrow-circle' size='lg' color='grey' className="back_button"></box-icon> */}
                 <i className="far fa-arrow-alt-circle-left buttonBack"></i>
                 </div>
             </Link>

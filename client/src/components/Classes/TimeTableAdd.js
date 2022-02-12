@@ -8,7 +8,6 @@ const TimeTableAdd = () =>{
 
     const {classesID2} = useParams()
     const token = localStorage.getItem("firsLogin")
-    // console.log(token)
     const [info, setInfo] = useState({
         time: "",
         nPeople: "",
@@ -21,7 +20,7 @@ const TimeTableAdd = () =>{
         const {name, value} = e.target
         setInfo({...info, [name]: value})
     }
-    // console.log(info)
+    
 
     const addTimeSubmit = async e  =>{
         e.preventDefault()

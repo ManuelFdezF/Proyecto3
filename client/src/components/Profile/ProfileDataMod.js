@@ -14,22 +14,20 @@ const ProfileDataMod = () =>{
     const [successMessage, setSuccessMessage] = useState(null)
     const [errorMessage, setErrorMessage] = useState(null)
 
-    // const token = localStorage.getItem("firsLogin")
-    // console.log("token modificar perfil", token)
+    
 
     const onChangeInput = (e) =>{
         const {name , value} = e.target
         setInfo({...info, [name]: value})
     }
-    // console.log(info)
+    
 
     const modSubmit = async e =>{
 
         e.preventDefault()
         try {
             const token = localStorage.getItem("firsLogin")
-            // console.log("token modificar perfil", token)
-
+           
             const response = await axios.put("http://localhost:5000/api/updateProfile", {...info}, {headers:{"Authorization": token}} )
             // console.log (response)
             setSuccessMessage(response.data.message)
@@ -56,14 +54,8 @@ const ProfileDataMod = () =>{
                 <input type="password" name="password" value={info.password} onChange={onChangeInput} className="form-control input_design" id="floatingPassword" placeholder="Password" />
                 <label htmlFor="floatingPassword" className="color_input">Contraseña</label>
             </div>
-                    {/* <label className="subtitle_mod">Nombre
-                        <input type="text" className="input_mod" name="name" onChange={onChangeInput}/> </label>
-                        <label className="subtitle_mod">Apellido
-                        <input type="text" className="input_mod" name="surname" onChange={onChangeInput}/> </label>
-                        <label className="subtitle_mod">Password
-                        <input type="password" className="input_mod" name="password" onChange={onChangeInput}/> </label> */}
-                        <div className="message_login" style={{display: successMessage ? "block": "none"}}>{successMessage}</div>
-                        <div className="message_login" style={{display: errorMessage ? "block": "none"}}>{errorMessage}</div>
+                <div className="message_login" style={{display: successMessage ? "block": "none"}}>{successMessage}</div>
+                <div className="message_login" style={{display: errorMessage ? "block": "none"}}>{errorMessage}</div>
                 </div> 
                 <div className="container_input_addTmtb">
                 <button className="button_submit" type="submit">Aceptar</button>

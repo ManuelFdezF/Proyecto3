@@ -9,7 +9,6 @@ const Wods = () =>{
 
     const [wodss, setWodss] = useState([])
     const token = localStorage.getItem('firsLogin')
-    // console.log(token)
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -22,7 +21,6 @@ const Wods = () =>{
 
     
 
-    // console.log(wodss)
     return (
         <div>
             <NavBar />
@@ -41,7 +39,6 @@ const Wods = () =>{
                         <p className="wod_time">{WODS.time}</p>
                         <p className="wod_type"> {WODS.type}</p>
                         <div className="container_description">
-                            {/* <p className="wod_description">{WODS.description}</p> */}
                             {
                                 description1.map((desc, i)=>{
                                     return(
@@ -59,7 +56,6 @@ const Wods = () =>{
         <Link to="/home">
             <div className="container_back_button">
             <i className="far fa-arrow-alt-circle-left buttonBack"></i>
-                {/* <box-icon name='left-arrow-circle' size='lg' color='grey' className="back_button"></box-icon> */}
             </div>
         </Link>
         </div>

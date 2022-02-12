@@ -58,10 +58,6 @@ const WodCreate = () =>{
             <form onSubmit={submitCreateWod}> 
             <h2 className="subtitle">Crea un WOD</h2>
             <div className="containerRegister">
-            {/* <div className="form-floating mb-3 container_inputReg">
-                <input type="text" name="type" value={info.type} onChange={onChangeInput} className="form-control input_design" id="floatingTypeWod" placeholder="Tipo de WOD" />
-                <label htmlFor="floatingTypeWod" className="color_input">AMRAP, EMOM o For Time</label>
-            </div> */}
             <select className="select_wod input_design" name="type" onChange={onChangeInput}>
                 <option  value="A" >Tipo de WOD</option>
                 <option  value="AMRAP" >AMRAP</option>

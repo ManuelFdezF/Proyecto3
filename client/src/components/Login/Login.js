@@ -33,13 +33,9 @@ const loginSubmit = async e =>{
         const response = await axios.post ("http://localhost:5000/api/login", {...info})
         localStorage.setItem("firsLogin", response.data.accessToken)
         localStorage.setItem("role", response.data.role)
-        // console.log("localStorage", localStorage)
-        // console.log("response", response)
+        
         setSuccessMessage(response.data.message)
-        // if (response.data.success === true){
-            navigate('/home')
-            // console.log("entra en el if")
-        // }
+        navigate('/home')
         
         
     } catch (error) {
@@ -61,8 +57,6 @@ const loginSubmit = async e =>{
                 <input type="password" name="password" value={info.password} onChange={onChangeInput} className="form-control input_design" id="floatingPassword" placeholder="Password" />
                 <label htmlFor="floatingPassword" className="color_input">Contraseña</label>
             </div>
-            {/* <input type="text" placeholder="Email" name="email" onChange={onChangeInput} className="input_login"></input> <br />
-            <input type="password" placeholder="Contraseña" name="password" onChange={onChangeInput} className="input_login"></input> <br /> */}
             <div className="message_login" style={{display: successMessage ? "block": "none"}}>{successMessage}</div>
             <div className="message_login" style={{display: errorMessage ? "block": "none"}}>{errorMessage}</div>
             <button className="button_submit" type="submit">Enviar</button>

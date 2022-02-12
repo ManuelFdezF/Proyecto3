@@ -6,7 +6,6 @@ import { useEffect } from 'react'
 
 const Logout = () =>{
     
-    // console.log(NavBarLogin)
     localStorage.removeItem("firsLogin")
     localStorage.removeItem("role")
     const navigate = useNavigate()

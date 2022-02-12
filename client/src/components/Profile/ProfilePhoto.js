@@ -27,28 +27,9 @@ const ProfilePhoto = () =>{
             // setImagess(response.data.user.imagen.public_id)
         })
     }, )
-    // console.log("images",imagess)
+    
     // ------------------------------- Función de eliminar imagen ------------------------------
-    // const deleteImagen = async e =>{
-    //     // console.log(publicId)
-    //     try {
-    //         const response = await axios.post("http://localhost:5000/api/destroyPhoto", {"public_id": publicId}, {headers:{"Authorization": token}})
-
-    //         await axios.put("http://localhost:5000/api/updateProfile", {
-    //           "imagen" : {
-    //                 "public_id": "",
-    //                 "url": "https://res.cloudinary.com/dzenpc7wi/image/upload/v1642780148/crossfitAPP/auxt7ab5smg7879zbq4f.webp"
-    //           }
-    //       }, {headers:{"Authorization": token}} )
-
-    //         setSuccessMessage(response.data.msg)
-    //         // console.log(response)
-    //     } catch (err) {
-    //         setErrorMessage(err.response.data.msg)
-    //     }
-       
-    // }
-
+    
     const showAlert =  () =>{
       
       swal({
@@ -81,11 +62,10 @@ const ProfilePhoto = () =>{
 
     // ------------------------------- Función para cargar imagen de perfil --------------------
 
-    // const [loading, setLoading] = useState(false);
-    // const [imagess, setImagess] = useState(null);
+    
 
     const handleUpload = async (e) => {
-        // e.preventDefault();
+        
         
         try {
            
@@ -108,7 +88,6 @@ const ProfilePhoto = () =>{
             }
           )
          
-
           // Para añadir la imagen al usuario
 
           const responsePhoto = await axios.put("http://localhost:5000/api/updateProfile", {
@@ -139,20 +118,16 @@ const ProfilePhoto = () =>{
                     <img className="profile_photo" alt="" src={imagen}></img>
                 </div>
                 <div className="container_buttons">
-                {/* <button className="button_submit" type="file" name="file" onChange={handleUpload}  >Examinar</button> */}
                 <label>
                 <input className="upload_imagen" type="file" name="file" onChange={handleUpload}></input></label>
-                {/* <button className="button_submit">Aceptar</button> */}
                 </div>
                 <div className="message_login" style={{display: successMessage ? "block": "none"}}>{successMessage}</div>
                 <div className="message_login" style={{display: errorMessage ? "block": "none"}}>{errorMessage}</div>
-                {/* <button className="button_delete_photo"  onClick={deleteImagen}>Eliminar foto</button> */}
                 <button className="button_delete_photo"  onClick={showAlert}>Eliminar foto</button>
             </div>
 
             <Link to="/profile">
                 <div className="container_back_button">
-                {/* <box-icon name='left-arrow-circle' size='lg' color='grey' className="back_button"></box-icon> */}
                 <i className="far fa-arrow-alt-circle-left buttonBack"></i>
                 </div>
             </Link>

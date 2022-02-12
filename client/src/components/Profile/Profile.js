@@ -19,7 +19,6 @@ const Profile = () =>{
                 <div className="containerCircle">
                     <Link className="circle" to="/profileData">
                     <img className="img_Circle" src={imgModProf} alt=""></img>
-                        {/* <p className="menu_copy">General</p> */}
                     </Link>
                     
                 </div>
@@ -33,7 +32,6 @@ const Profile = () =>{
             <div className="goBack">
             <Link to="/home">
                 <div className="container_back_button">
-                {/* <box-icon name='left-arrow-circle' size='lg' color='grey' className="back_button"></box-icon> */}
                 <i className="far fa-arrow-alt-circle-left buttonBack"></i>
                 </div>
             </Link></div>

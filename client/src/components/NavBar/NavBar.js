@@ -7,29 +7,7 @@ import imgLogo2 from './images/imgLogo1.png'
 const NavBar = () =>{
 
     const role = localStorage.getItem('role')
-  // console.log("navbar", role)
-
-    // const navBarNull = ()=>{
-    //   return(
-    //     <div>
-    //   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-    //     <div className="container-fluid">
-    //     <Link className="navbar-brand mx-auto" to="/home">CrossFitAPP</Link>
-    //     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    //     <span className="navbar-toggler-icon"></span>
-    //     </button>
-    //     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-    //     <div className="navbar-nav">
-    //       {/* <Link className="nav-link active" aria-current="page" to="/home">Home</Link> */}
-    //       <Link className="nav-link" to="/login">Login</Link>
-          
-    //     </div>
-    //     </div>
-    //   </div>
-    // </nav>
-    // </div>
-    //   )
-    // }
+  
 
     const navBarAdmin = ()=>{
       return(
@@ -42,18 +20,14 @@ const NavBar = () =>{
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav" >
-          {/* <Link className="nav-link active" aria-current="page" to="/home">Home</Link> */}
           <Link className="nav-link" to="/listclasses">Reservar Clase</Link>
           <Link className="nav-link" to="/exercices">Ejercicios</Link>
           <Link className="nav-link" to="/wods" >WODs</Link>
           <Link className="nav-link" to="/profile">Perfil</Link>
           <Link className="nav-link" to="/register">Registrar Usuario</Link>
-          {/* <Link className="nav-link" to="/usersList">Baja Usuario</Link> */}
           <Link className="nav-link" to="/classesAdd">Crear Clase</Link>
           <Link className="nav-link" to="/classeslist">Crear Horario</Link>
           <Link className="nav-link" to="/createWod">Crear Wod</Link>
-         
-          {/* <Link className="nav-link" to="/logout">Salir</Link> */}
           <Link className="nav-link" to="/logout"><i className="fas fa-sign-out-alt"></i></Link>
         </div>
         </div>
@@ -74,12 +48,10 @@ const NavBar = () =>{
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              {/* <Link className="nav-link active" aria-current="page" to="/home">Home</Link> */}
               <Link className="nav-link" to="/listclasses">Reservar Clase</Link>
               <Link className="nav-link" to="/exercices">Ejercicios</Link>
               <Link className="nav-link" to="/wods">WODs</Link>
               <Link className="nav-link" to="/profile">Perfil</Link>
-              {/* <Link className="nav-link" to="/logout">Salir</Link> */}
               <Link className="nav-link" to="/logout"><i className="fas fa-sign-out-alt"></i></Link>
             </div>
             </div>
@@ -94,10 +66,6 @@ const NavBar = () =>{
       <div>
         
         {
-          // if (role == null) navBarNull()
-          
-          // role == null ? navBarNull() : navBarUser()
-
           role == 0 ? navBarUser() : navBarAdmin()
         }
       </div>

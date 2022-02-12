@@ -10,12 +10,10 @@ const UsersList = () =>{
     const [users, setUsers] = useState([])
     const token = localStorage.getItem('firsLogin')
     const role = localStorage.getItem('role')
-    // const [successMessage, setSuccessMessage] = useState(null)
-    // const [errorMessage, setErrorMessage] = useState(null)
-    // const [loader,setLoader] = useState(false)
+
     const navigate = useNavigate()
     useEffect(()=>{
-        // setLoader(true)
+    
         let mounted = true
         if (!token){
             navigate('/')
@@ -55,8 +53,7 @@ const UsersList = () =>{
                 }  
                 
             } catch (error) {
-                // setErrorMessage(error.response.data.message)
-                // swal({text: error.response.data.message, icon: "error", timer: "2000"})
+                
             }
             })
     }
@@ -79,12 +76,10 @@ const UsersList = () =>{
                  <tr>
                  <th className="copy_Input">Nombre</th>
                  <th className="copy_Input">Apellido</th>
-                 {/* <th>Email</th> */}
+
                  </tr>
              </thead>
-             {/* {
-                 loader && <Loader />
-             } */}
+             
              <tbody>
              {
                  users.map((Users)=>{
@@ -92,7 +87,6 @@ const UsersList = () =>{
                          <tr key={Users._id}>
                              <td>{Users.name}</td>
                              <td>{Users.surname}</td>
-                             {/* <td><Link className="button_user_delete" to={`/deleteUsers/${Users._id}`}> ❌ </Link></td> */}
                              <td><div onClick={()=>{showAlert(Users._id)}}>❌</div></td>
                          </tr>
                      )
@@ -104,7 +98,6 @@ const UsersList = () =>{
          
          <Link to="/home">
              <div className="container_back_button">
-                 {/* <box-icon name='left-arrow-circle' size='lg' color='grey' className="back_button"></box-icon> */}
                  <i className="far fa-arrow-alt-circle-left buttonBack"></i>
              </div>
          </Link>

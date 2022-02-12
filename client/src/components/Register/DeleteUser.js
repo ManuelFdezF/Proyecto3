@@ -36,7 +36,6 @@ const DeleteUser = () =>{
             <div style={{display: errorMessage ? "block": "none"}}>{errorMessage}</div>
             <Link to="/usersList">
             <div className="container_back_button">
-                {/* <box-icon name='left-arrow-circle' size='lg' color='grey' className="back_button"></box-icon> */}
                 <i className="far fa-arrow-alt-circle-left buttonBack"></i>
             </div>
         </Link>

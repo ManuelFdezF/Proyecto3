@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import { Link, Outlet, useNavigate } from "react-router-dom"
 import './Exercices.css'
 import NavBar from "../NavBar/NavBar"
-// import swal from 'sweetalert'
 import Loader from "../Loader/Loader"
 
 
@@ -11,7 +10,6 @@ const Exercices = () =>{
 
     const [exercicess, setExercicess] = useState([])
     const token = localStorage.getItem('firsLogin')
-    // console.log(token)
     const navigate = useNavigate()
     useEffect(()=>{
         if (!token) navigate('/')
@@ -49,8 +47,6 @@ const Exercices = () =>{
                         <div key={EXERCICES._id} className="container_exercices1">
                         <Link className="container_exercices" to={`/marks/${EXERCICES._id}`}>
                         <button className="exercices_list">{EXERCICES.nameExercice}</button></Link>
-                        {/* <Link className="button_user_delete" to={`/deleteExercice/${EXERCICES._id}`}> ❌ </Link> */}
-                        {/* <div onClick={()=>{showAlert(EXERCICES._id)}}>❌</div> */}
                         </div>
                         
                     )

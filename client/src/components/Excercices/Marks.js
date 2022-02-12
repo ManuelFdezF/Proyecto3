@@ -17,35 +17,24 @@ const Marks = () => {
     
 
     useEffect(() => {
-        // const getMark = async () => {
-            // try {
-                let mounted = true
-                // const response = await axios.get(`http://localhost:5000/api/marksUserList/${exerciceID}`, {headers:{"Authorization": token}});
-                axios.get(`http://localhost:5000/api/marksUserList/${exerciceID}`, {headers:{"Authorization": token}}).then((response)=>{
-                    if (mounted){
-                        setMarkList(response.data.marks);
-                        setSuccessMessage(response.data.message)
-                        setNameExercice(response.data.exercices)
-                    }
-                    // console.log(markList)
-                    // console.log(nameExercice)
-                })
-                
-            // } catch (error) {
-            //     setErrorMessage(error.responsee.data.message)
-            // }
-            
-            return () =>{
-                mounted = false
+        let mounted = true
+        axios.get(`http://localhost:5000/api/marksUserList/${exerciceID}`, {headers:{"Authorization": token}}).then((response)=>{
+            if (mounted){
+                setMarkList(response.data.marks);
+                setSuccessMessage(response.data.message)
+                setNameExercice(response.data.exercices)
             }
-        // };
-        // getMark();
-        
+            // console.log(markList)
+            // console.log(nameExercice)
+        })
+                  
+        return () =>{
+            mounted = false
+        }
     }, )
     // Alert para eliminar marca ------------------
 
     const showAlert = (markssID) =>{
-        // console.log(IDExercice)
         localStorage.setItem('IDMarks', markssID)
         swal({
             text: "¿Estás seguro que quieres eliminar la resultado?",
@@ -87,17 +76,6 @@ const Marks = () => {
     }
 
 
-    // const deleteMark = async (markssID) =>{
-    //     // e.preventDefault()
-    //     try {
-    //         const responsee = await axios.delete(`http://localhost:5000/api/deleteUserMark/${markssID}`, {headers:{"Authorization": token}})
-    //         setSuccessMessage(responsee.data.message)
-            
-    //     } catch (error) {
-    //         setErrorMessage(error.responsee.data.message)
-    //     }
-        
-    // }
 
     const loading = () =>{
         return <div>
@@ -145,7 +123,6 @@ const Marks = () => {
                                 <td>{marksExer.reps}</td>
                                 <td>{marksExer.weight}</td>
                                 <td>{marksExer.comment}</td>
-                                {/* <td><div className="button_delete_mark" onClick={()=>deleteMark(marksExer._id)}>❌</div></td> */}
                                 <td><div onClick={()=>{showAlert(marksExer._id)}}>❌</div></td>
                             </tr>
 
@@ -155,16 +132,13 @@ const Marks = () => {
             </tbody>
             </table>
                 <div className="message_login" style={{display: successMessage ? "block": "none"}}>{successMessage}</div>
-                {/* <div className="message_login" style={{display: errorMessage ? "block": "none"}}>{errorMessage}</div> */}
             <Link className="container_addExercice" to={`marksAdd/${exerciceID}`}>
-            {/* <button className="button_submit">Add score</button> */}
             <i className="fas fa-plus-circle buttonPlus"></i>
             </Link>
             <Outlet />
                 <br /><button className="button_delete_user" onClick={()=>{showAlert1(exerciceID)}}>Eliminar ejercicio</button>
             <Link to="/exercices">
                 <div className="container_back_button">
-                {/* <box-icon name='left-arrow-circle' size='lg' color='grey' className="back_button"></box-icon> */}
                 <i className="far fa-arrow-alt-circle-left buttonBack"></i>
                 </div>
             </Link>
@@ -186,37 +160,3 @@ export default Marks;
 
 
 
-// import './Exercices.css'
-
-// const Marks = (props) => {
-
-//     console.log(props.id)
-
-
-
-//     return (
-
-//         <div>
-//             <table className="marks_table">
-//                 <thead className="header_marks">
-//                     <th>Fecha</th>
-//                     <th>Reps</th>
-//                     <th>Peso</th>
-//                     <th>Comentario</th>
-//                 </thead>
-//                 <tbody>
-// //                 {
-
-
-//                 }
-
-
-//                 </tbody>
-//                 </table>
-
-//         </div>
-       
-//     )
-// }
-
-// export default Marks
