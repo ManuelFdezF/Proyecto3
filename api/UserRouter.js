@@ -31,6 +31,8 @@ UserRouter.post("/register", checkToken, authAdmin, async (req, res)=>{
         const{name, surname, email, password, imagen} = req.body
         
         
+            
+
         const user2 = await User.findById(req.user.id)     // Busca en el modelo de usuario si encuentra la ID pasada por token
             if (!user2) return res.status(500).json({           // Si no encuentra la id de usuario es que no está logueado
                 success: false,
@@ -65,11 +67,11 @@ UserRouter.post("/register", checkToken, authAdmin, async (req, res)=>{
         
         //LLAMO LA FUNCIÓN DE CORREO ELECTRONICO 
 
-        nodemailer.sendWelcomeEmail(
-            email,
-            password,
-            name,
-        )  
+        // nodemailer.sendWelcomeEmail(
+        //     email,
+        //     password,
+        //     name,
+        // )  
 
         const newUser = new User({
             name,
