@@ -12,7 +12,7 @@ const DeleteUser = () =>{
     const deleteSubmit = async e =>{
         e.preventDefault()
         try {
-            const response = await axios.delete(`http://localhost:5000/api/deleteUsers/${userID}`, {headers:{"Authorization": token}})
+            const response = await axios.delete(`/api/deleteUsers/${userID}`, {headers:{"Authorization": token}})
             setSuccessMessage(response.data.message)
             console.log(response.data.message)
         } catch (error) {

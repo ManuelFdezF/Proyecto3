@@ -30,7 +30,7 @@ const loginSubmit = async e =>{
 
     e.preventDefault()
     try {
-        const response = await axios.post ("http://localhost:5000/api/login", {...info})
+        const response = await axios.post ("/api/login", {...info})
         localStorage.setItem("firsLogin", response.data.accessToken)
         localStorage.setItem("role", response.data.role)
         
