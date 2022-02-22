@@ -14,7 +14,7 @@ const Exercices = () =>{
     useEffect(()=>{
         if (!token) navigate('/')
         let mounted = true
-        axios.get("http://localhost:5000/api/exercicesUser", {headers:{"Authorization": token}} ).then((response) =>{
+        axios.get("/api/exercicesUser", {headers:{"Authorization": token}} ).then((response) =>{
             // console.log(response)
             if (mounted){
                 setExercicess(response.data.exercices)

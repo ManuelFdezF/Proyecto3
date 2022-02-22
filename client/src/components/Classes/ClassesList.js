@@ -20,7 +20,7 @@ const ClassesList = () =>{
                 navigate('/home')
             }
         }
-        axios.get("http://localhost:5000/api/getClasses", {headers:{"Authorization": token}}).then((response)=>{
+        axios.get("/api/getClasses", {headers:{"Authorization": token}}).then((response)=>{
             // console.log(response)
             setClasses(response.data.classes)
             

@@ -28,7 +28,7 @@ const ProfileDataMod = () =>{
         try {
             const token = localStorage.getItem("firsLogin")
            
-            const response = await axios.put("http://localhost:5000/api/updateProfile", {...info}, {headers:{"Authorization": token}} )
+            const response = await axios.put("/api/updateProfile", {...info}, {headers:{"Authorization": token}} )
             // console.log (response)
             setSuccessMessage(response.data.message)
         } catch (error) {

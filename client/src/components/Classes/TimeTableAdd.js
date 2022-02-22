@@ -26,7 +26,7 @@ const TimeTableAdd = () =>{
         e.preventDefault()
         try {
             
-            const response = await axios.post(`http://localhost:5000/api/createTime/${classesID2}`, {...info}, {headers:{"Authorization": token}})
+            const response = await axios.post(`/api/createTime/${classesID2}`, {...info}, {headers:{"Authorization": token}})
             setSuccessMessage(response.data.message)
             setInfo({
                 time: "",

@@ -16,7 +16,7 @@ const TimeTable = () =>{
     useEffect (()=>{
         
             let mounted = true
-            axios.get(`http://localhost:5000/api/classesList/${classesID}`, {headers:{"Authorization": token}}).then((response)=>{
+            axios.get(`/api/classesList/${classesID}`, {headers:{"Authorization": token}}).then((response)=>{
                 if (mounted){
                     setTimeTables(response.data.timeTable)
                     setCurrentDate(response.data.date)
@@ -39,7 +39,7 @@ const TimeTable = () =>{
             let timeID = localStorage.getItem("time")
             try {
                 if(respuesta){
-                   const response = await axios.delete(`http://localhost:5000/api/deleteTime/${timeID}`, {headers:{"Authorization": token}})
+                   const response = await axios.delete(`/api/deleteTime/${timeID}`, {headers:{"Authorization": token}})
                 //    setSuccessMessage(response.data.message)
                     swal({text: response.data.message, icon: "success", timer: "2000"})
                     localStorage.removeItem("time")
@@ -65,7 +65,7 @@ const TimeTable = () =>{
             let IDclass = localStorage.getItem("class")
             try {
                 if(respuesta){
-                    const response = await axios.delete(`http://localhost:5000/api/deleteClass/${IDclass}`, {headers:{"Authorization": token}})
+                    const response = await axios.delete(`/api/deleteClass/${IDclass}`, {headers:{"Authorization": token}})
                     // setSuccessMessage(response.data.message)
                     swal({text: response.data.message, icon: "success", timer: "2000"})
                     localStorage.removeItem("class")

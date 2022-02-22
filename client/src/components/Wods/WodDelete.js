@@ -21,7 +21,7 @@ const WodDelete = () =>{
             }
         }
 
-        axios.get("http://localhost:5000/api/wodsList", {headers:{"Authorization": token}} ).then((response) =>{
+        axios.get("/api/wodsList", {headers:{"Authorization": token}} ).then((response) =>{
             // console.log(response)
             if (mounted){
                 setWodss(response.data.wods)
@@ -40,7 +40,7 @@ const WodDelete = () =>{
         }).then(respuesta  =>{
             let wodd = localStorage.getItem("wod")
             if(respuesta){
-                axios.delete(`http://localhost:5000/api/deleteWod/${wodd}`, {headers:{"Authorization": token}})
+                axios.delete(`/api/deleteWod/${wodd}`, {headers:{"Authorization": token}})
                 swal({text: "El Wod se ha eliminado correctamente", icon: "success", timer: "2000"})
                 localStorage.removeItem("wod")
             }else{

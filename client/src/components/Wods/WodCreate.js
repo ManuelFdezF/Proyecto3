@@ -37,7 +37,7 @@ const WodCreate = () =>{
         e.preventDefault()
 
         try {
-            const response = await axios.post("http://localhost:5000/api/createWod", {...info}, {headers:{"Authorization": token}})
+            const response = await axios.post("/api/createWod", {...info}, {headers:{"Authorization": token}})
             setSuccessMessage(response.data.message)
             setInfo({
                 type: "",

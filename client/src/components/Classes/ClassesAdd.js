@@ -33,7 +33,7 @@ const ClassesAdd = ()=>{
     const createClass = async e =>{
         e.preventDefault()
         try {
-            const response = await axios.post("http://localhost:5000/api/createClass", {...info}, {headers: {"Authorization": token}})
+            const response = await axios.post("/api/createClass", {...info}, {headers: {"Authorization": token}})
             setSuccessMessage(response.data.message)
             setInfo({
                 date: "",

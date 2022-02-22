@@ -22,7 +22,7 @@ const UsersList = () =>{
                 navigate('/home')
             }
         }
-        axios.get("http://localhost:5000/api/usersList", {headers:{"Authorization": token}}).then((response) =>{
+        axios.get("/api/usersList", {headers:{"Authorization": token}}).then((response) =>{
             // console.log(response)
             if (mounted){
                 setUsers(response.data.users)
@@ -44,7 +44,7 @@ const UsersList = () =>{
             try {
                 let IDUSER = localStorage.getItem("usr")
                 if(respuesta){
-                   const response = await axios.delete(`http://localhost:5000/api/deleteUsers/${IDUSER}`, {headers:{"Authorization": token}})
+                   const response = await axios.delete(`/api/deleteUsers/${IDUSER}`, {headers:{"Authorization": token}})
                 //    setSuccessMessage(response.data.message)
                     swal({text: response.data.message, icon: "success", timer: "2000"})
                     localStorage.removeItem("usr")
