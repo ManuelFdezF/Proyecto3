@@ -8,6 +8,35 @@ const mongoose = require("mongoose")
 
 // Ruta para crear ejercicio con token de usuario
 
+
+function ExistExercice (exercicess){
+    let exercicesFound = false
+    exercicess.map((exerciceSearch)=>{   // No utilizo "some" porque me puede devolver varios ejercicios por usuario
+        if (exerciceSearch.nameExercice == nameExercice){
+            return exercicesFound = true
+        }
+    })
+
+    if (exercicesFound == true){
+        return res.status(400).json({
+            success:false,
+            message: `El ejercicio ya existe para el usuario ${user.name}` 
+        })
+    }else{
+        return false
+    }
+}
+
+function createExercice(){
+    const newExercice = new Exercices({ 
+        nameExercice,
+        user
+    })
+    
+    await newExercice.save()
+}
+
+
 ExercicesRouter.post("/createExercice", checkToken, async (req, res) =>{
     try {
         const {nameExercice} = req.body
@@ -28,33 +57,17 @@ ExercicesRouter.post("/createExercice", checkToken, async (req, res) =>{
 
         // Compruebo si el ejercicio existe para el usuario logueado
 
-        let exercicesFound = false
-
+       
         const exercicess = await Exercices.find({user: req.user.id})
-        // console.log(exercicess)
         
-        exercicess.map((exerciceSearch)=>{
-            // console.log("exercicess.nameExercice",exerciceSearch.nameExercice)
-            if (exerciceSearch.nameExercice == nameExercice){
-                return exercicesFound = true
-            }
-        })
-
-        if (exercicesFound == true){
-            return res.status(400).json({
-                success:false,
-                message: `El ejercicio ya existe para el usuario ${user.name}` 
-            })
+        let existExercice = ExistExercice(exercicess)
+        if (!existExercice){
+            createExercice()
         }
         
         
-       
-        const newExercice = new Exercices({ 
-            nameExercice,
-            user
-        })
+       //respuesta de end point
         
-        await newExercice.save()
         return res.status(200).json({
             success:true, 
             newExercice,
@@ -67,6 +80,59 @@ ExercicesRouter.post("/createExercice", checkToken, async (req, res) =>{
             success: false,
             message: error.message
         }) 
+    }
+})
+
+
+
+
+
+
+
+// Ruta para eliminar un ejercicio por ID pero estando logueado
+
+const deleteAsociateMarks = (id) =>{
+     //Elimino las marcas que están asociadas al ejercicio
+     Mark.find({exercices: id}).then(foundMarks =>{
+        foundMarks.map((arrMark)=>{
+            Mark.findByIdAndDelete(arrMark._id, function(err, arrMark){
+                if (err){
+                    console.log(error)
+                }else{
+                    console.log("Eliminada marca", arrMark)
+                }
+            })
+        })
+    })
+}
+
+ExercicesRouter.delete("/deleteExercice/:id", checkToken, async (req, res) =>{
+    try {
+        const {id} = req.params
+
+        const user = await Users.findById(req.user.id)
+        if (!user) return res.status(400).json({
+            success: false,
+            message: "Usuario no logueado"
+        })
+
+        const exerciceToDelete = await Exercices.findByIdAndDelete(id)
+        if (exerciceToDelete){
+            deleteAsociateMarks(id)
+        }
+
+        
+
+        return res.status(200).json({
+            success: true,
+            message: "Ejercicio eliminado correctamente"
+        })
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        })  
     }
 })
 
@@ -84,11 +150,7 @@ ExercicesRouter.put("/updateExercice/:id", checkToken, async (req, res) =>{
             message: `El usuario no está logueado`
         })
 
-        // const exercice = await Exercices.findOne({nameExercice})  
-        // if(exercice) return res.status(400).json({
-        //     success:false,
-        //     message: `'${nameExercice}' ya está creado.` 
-        // })
+     
         
         if (!nameExercice){
             return res.status(400).json({
@@ -109,50 +171,6 @@ ExercicesRouter.put("/updateExercice/:id", checkToken, async (req, res) =>{
         })  
     }
 })
-
-
-
-
-// Ruta para eliminar un ejercicio por ID pero estando logueado
-
-ExercicesRouter.delete("/deleteExercice/:id", checkToken, async (req, res) =>{
-    try {
-        const {id} = req.params
-
-        const user = await Users.findById(req.user.id)
-        if (!user) return res.status(400).json({
-            success: false,
-            message: "Usuario no logueado"
-        })
-
-        await Exercices.findByIdAndDelete(id)
-
-        //Elimino las marcas que están asociadas al ejercicio
-        Mark.find({exercices: id}).then(foundMarks =>{
-            foundMarks.map((arrMark)=>{
-                Mark.findByIdAndDelete(arrMark._id, function(err, arrMark){
-                    if (err){
-                        console.log(error)
-                    }else{
-                        console.log("Eliminada marca", arrMark)
-                    }
-                })
-            })
-        })
-
-        return res.status(200).json({
-            success: true,
-            message: "Ejercicio eliminado correctamente"
-        })
-
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: error.message
-        })  
-    }
-})
-
 
 // Las siguientes dos rutas las uno en el FRONT
 
