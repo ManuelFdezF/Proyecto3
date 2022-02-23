@@ -11,7 +11,7 @@ const checkToken = require("../middleware/auth")
 
 // crear nueva reserva enviando id de usuario por token
 
-function UserCanBook(currentTimeTable) {
+
 
 
     /*
@@ -35,24 +35,24 @@ function UserCanBook(currentTimeTable) {
     //         return found = true
     //     }
     // })
-
-    return  !currentTimeTable.attendees.some(a => a.equals(user._id));
-
+    function UserCanBook(currentTimeTable, user) {
+         return  !currentTimeTable.attendees.some(a => a.equals(user._id));
+    }
     // if (found == true) {
     //     return false;
     // } else {
     //     return true;
     // }
-}
+
 
 function HasCapacityInClass(currentTimeTable) {
-    if (currentTimeTable.attendeeds.length >= currentTimeTable.capacity ) {
+    if (currentTimeTable.attendees.length >= currentTimeTable.capacity ) {
         return false;
     }
     return true;
 }
 
-function AddBooking(){
+async function AddBooking () {
     newBooking = new Booking({
         user: req.user.id,
         class: classID,
@@ -77,17 +77,14 @@ BookingRouter.post("/newBooking", checkToken, async (req, res) => {
         BookingRouter.post("/booking", checkToken, async (req,res) => ...
     */
 
-    const {
-        classID,
-        timeTableID
-    } = req.body
+    const {classID, timeTableID} = req.body
 
     try {
 // Clausulas de guarda
         const user = await Users.findById(req.user.id)
         if (!user) return res.status(400).json({
             success: false,
-            message: "Usuario no logueado"
+            message: "Usuario no encontrado"
         })
         if (!classID || !timeTableID) {
             res.status(400).json({
@@ -106,7 +103,7 @@ BookingRouter.post("/newBooking", checkToken, async (req, res) => {
         if (userCanBook && hasCapacityInClass) {
             AddBooking();
         }
-
+        
 
 // Respuesta del endpoing
 
@@ -128,9 +125,7 @@ BookingRouter.post("/newBooking", checkToken, async (req, res) => {
 
 BookingRouter.delete("/deleteBooking/:id", checkToken, async (req, res) => {
     try {
-        const {
-            id
-        } = req.params
+        const {id} = req.params
         const user = await Users.findById(req.user.id)
         if (!user) return res.status(400).json({
             success: false,
