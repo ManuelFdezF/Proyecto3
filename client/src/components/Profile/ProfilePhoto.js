@@ -20,7 +20,7 @@ const ProfilePhoto = () =>{
 
     useEffect(()=>{
       if (!token) navigate('/')
-        axios.get("http://localhost:5000/api/profile", {headers:{"Authorization": token}}).then((response) =>{
+        axios.get("/api/profile", {headers:{"Authorization": token}}).then((response) =>{
             // setUserData(response.data.user)
             setImagen(response.data.user.imagen.url)
             setPublicId(response.data.user.imagen.public_id)
@@ -40,9 +40,9 @@ const ProfilePhoto = () =>{
           
           if(respuesta){
             try {
-              const response = await axios.post("http://localhost:5000/api/destroyPhoto", {"public_id": publicId}, {headers:{"Authorization": token}})
+              const response = await axios.post("/api/destroyPhoto", {"public_id": publicId}, {headers:{"Authorization": token}})
   
-              await axios.put("http://localhost:5000/api/updateProfile", {
+              await axios.put("/api/updateProfile", {
                 "imagen" : {
                       "public_id": "",
                       "url": "https://res.cloudinary.com/dzenpc7wi/image/upload/v1642780148/crossfitAPP/auxt7ab5smg7879zbq4f.webp"
@@ -79,7 +79,7 @@ const ProfilePhoto = () =>{
           formData.append("file", file);
     
         //   setLoading(true);
-          const res = await axios.post(`http://localhost:5000/api/upload`, formData, 
+          const res = await axios.post(`/api/upload`, formData, 
             {
               headers: {
                 "content-type": "multipart/form-data",
@@ -90,7 +90,7 @@ const ProfilePhoto = () =>{
          
           // Para añadir la imagen al usuario
 
-          const responsePhoto = await axios.put("http://localhost:5000/api/updateProfile", {
+          const responsePhoto = await axios.put("/api/updateProfile", {
               "imagen" : {
                     "public_id": res.data.public_id,
                     "url": res.data.url

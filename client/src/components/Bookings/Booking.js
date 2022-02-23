@@ -21,7 +21,7 @@ const Booking = () =>{
     
 
     useEffect(() =>{
-        axios.get(`http://localhost:5000/api/bookingList/${classID}`, {headers:{"Authorization": token}}).then((response)=>{
+        axios.get(`/api/bookingList/${classID}`, {headers:{"Authorization": token}}).then((response)=>{
             // console.log("response", response)
             setTimeTable(response.data.horario)
             setBooking(response.data.reservas)
@@ -41,7 +41,7 @@ const Booking = () =>{
         }
         
         try {
-            const response1 = await axios.post(`http://localhost:5000/api/newBooking` , {...info}, {headers:{"Authorization": token}})
+            const response1 = await axios.post(`/api/newBooking` , {...info}, {headers:{"Authorization": token}})
             setSuccessMessage(response1.data.message)
             if (response1.data.message === "Ya estás apuntado en la clase"){
                 swal({text: response1.data.message, icon: "warning", timer: "3000"})
@@ -59,7 +59,7 @@ const Booking = () =>{
     const deleteBooking = async (bookingID) => {
          try {
            
-            const response2 = await axios.delete(`http://localhost:5000/api/deleteBooking/${bookingID}`,  {headers:{"Authorization": token}})
+            const response2 = await axios.delete(`/api/deleteBooking/${bookingID}`,  {headers:{"Authorization": token}})
             setSuccessMessage(response2.data.message)
             // setIsBooked(false)
            

@@ -30,7 +30,7 @@ const MarksAdd = () => {
         e.preventDefault()
         try {
            
-            const response = await axios.post("http://localhost:5000/api/createMark", {...info}, {headers:{"Authorization": token}})
+            const response = await axios.post("/api/createMark", {...info}, {headers:{"Authorization": token}})
             setSuccessMessage(response.data.message)
             // navigate(`/marks/${exerciceAddMarkID}`)
         } catch (error) {

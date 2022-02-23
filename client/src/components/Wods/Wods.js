@@ -13,7 +13,7 @@ const Wods = () =>{
 
     useEffect(()=>{
         if (!token) navigate('/')
-        axios.get("http://localhost:5000/api/wodsList", {headers:{"Authorization": token}} ).then((response) =>{
+        axios.get("/api/wodsList", {headers:{"Authorization": token}} ).then((response) =>{
             // console.log(response)
             setWodss(response.data.wods)
         })

@@ -18,7 +18,7 @@ const Marks = () => {
 
     useEffect(() => {
         let mounted = true
-        axios.get(`http://localhost:5000/api/marksUserList/${exerciceID}`, {headers:{"Authorization": token}}).then((response)=>{
+        axios.get(`/api/marksUserList/${exerciceID}`, {headers:{"Authorization": token}}).then((response)=>{
             if (mounted){
                 setMarkList(response.data.marks);
                 setSuccessMessage(response.data.message)
@@ -44,7 +44,7 @@ const Marks = () => {
             
             let IDMarkss = localStorage.getItem("IDMarks")
             if(respuesta){
-                axios.delete(`http://localhost:5000/api/deleteUserMark/${IDMarkss}`, {headers:{"Authorization": token}})
+                axios.delete(`/api/deleteUserMark/${IDMarkss}`, {headers:{"Authorization": token}})
                 swal({text: "El resultado se ha eliminado correctamente", icon: "success", timer: "2000"})
                 localStorage.removeItem("IDMarks")
                 
@@ -65,7 +65,7 @@ const Marks = () => {
         }).then(respuesta  =>{
             let IDEXERCICE = localStorage.getItem("exercice")
             if(respuesta){
-                axios.delete(`http://localhost:5000/api/deleteExercice/${IDEXERCICE}`, {headers:{"Authorization": token}})
+                axios.delete(`/api/deleteExercice/${IDEXERCICE}`, {headers:{"Authorization": token}})
                 swal({text: "El Ejercicio se ha eliminado correctamente", icon: "success", timer: "2000"})
                 localStorage.removeItem("exercice")
                 navigate("/exercices")

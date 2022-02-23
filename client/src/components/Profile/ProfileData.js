@@ -22,7 +22,7 @@ const ProfileData = () =>{
     useEffect(()=>{
         // if (!token) navigate('/')
         let mounted = true
-        axios.get("http://localhost:5000/api/profile", {headers:{"Authorization": token}}).then((response) =>{
+        axios.get("/api/profile", {headers:{"Authorization": token}}).then((response) =>{
             if (mounted){
                 setUserData(response.data.user) 
                 setImagen(response.data.user.imagen.url)
@@ -42,7 +42,7 @@ const ProfileData = () =>{
             buttons: ["No", "Si"]
         }).then(respuesta  =>{
             if(respuesta){
-                axios.delete("http://localhost:5000/api/deleteUser", {headers: {"Authorization": token}})
+                axios.delete("/api/deleteUser", {headers: {"Authorization": token}})
                 swal({text: "Tu cuenta se ha eliminado correctamente", icon: "success", timer: "2000"})
                 localStorage.removeItem("firsLogin")
                 navigate('/')

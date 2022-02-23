@@ -48,7 +48,7 @@ const registerSubmit = async e => {
             
     try {
         
-        const response = await axios.post("http://localhost:5000/api/register", {...info}, {headers:{"Authorization": token}})
+        const response = await axios.post("/api/register", {...info}, {headers:{"Authorization": token}})
         setSuccessMessage(response.data.message)
        
         setInfo({
