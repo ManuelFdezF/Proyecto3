@@ -27,7 +27,7 @@ function ExistExercice (exercicess){
     }
 }
 
-function createExercice(){
+async function  createExercice(){
     const newExercice = new Exercices({ 
         nameExercice,
         user
