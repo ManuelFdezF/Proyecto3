@@ -70,7 +70,6 @@ ClassesRouter.put("/updateClass/:id", checkToken, authAdmin, async (req, res) =>
         })
 
        
-
         await Classes.findByIdAndUpdate(id, {date, wodDay})
         res.status(200).json({
             success: true,
@@ -123,34 +122,34 @@ ClassesRouter.delete("/deleteClass/:id", checkToken, authAdmin, async (req, res)
 })
 
 // Listar Clase por día y que aparezcan los diferentes horarios ------- Hago el listado desde BookingRouter
-ClassesRouter.get("/classesList/:id", checkToken, async (req, res) => {
-    try {
-        const dateID = req.params.id
-        const user = await Users.findById(req.user.id)
-        if (!user) return res.status(400).json({
-            success: false,
-            message: "Usuario no logueado"
-        })
+// ClassesRouter.get("/classesList/:id", checkToken, async (req, res) => {
+//     try {
+//         const dateID = req.params.id
+//         const user = await Users.findById(req.user.id)
+//         if (!user) return res.status(400).json({
+//             success: false,
+//             message: "Usuario no logueado"
+//         })
 
-        Classes.findById(dateID) //.populate("date")
-        .then(date => {
-            TimeTable.find({ date: dateID }) //.populate("date")
-                .then(timeTable => {
-                    return res.json({
-                        success: true,
-                        date,
-                        timeTable
-                    })
-                })
-        })
+//         Classes.findById(dateID) //.populate("date")
+//         .then(date => {
+//             TimeTable.find({ date: dateID }) //.populate("date")
+//                 .then(timeTable => {
+//                     return res.json({
+//                         success: true,
+//                         date,
+//                         timeTable
+//                     })
+//                 })
+//         })
 
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: error.message
-        })  
-    }
-})  
+//     } catch (error) {
+//         return res.status(500).json({
+//             success: false,
+//             message: error.message
+//         })  
+//     }
+// })  
     
 // Listar todas las clases
 
