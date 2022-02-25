@@ -127,7 +127,7 @@ BookingRouter.post("/newBooking", checkToken, async (req, res) => {
 
 // Ruta para eliminar una reserva por ID
 
-function FindBookingAndDelete(bookingForDelete, id){
+async function FindBookingAndDelete(bookingForDelete, id){
    const foundIdBooking = await Booking.findByIdAndDelete(id)
     // Elimino el usuario del array de personas apuntadas en clase
     await TimeTable.findByIdAndUpdate(bookingForDelete.timeTable, {
